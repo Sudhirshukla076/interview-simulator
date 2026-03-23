@@ -12,7 +12,7 @@ function Leaderboard() {
     try {
       const res = await axios.get(
         "https://interview-backend-u5yp.onrender.com/api/interview/leaderboard",
-   
+      );
         
 
       setData(res.data);

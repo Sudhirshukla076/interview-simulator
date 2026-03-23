@@ -13,10 +13,13 @@ function Results() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "https://interview-backend-u5yp.onrender.com/api/interview/results",
-          headers: { Authorization: token },
-        }
-      );
+  "https://interview-backend-u5yp.onrender.com/api/interview/results",
+  {
+    headers: {
+      Authorization: token,
+    },
+  }
+);
 
       setData(res.data);
     } catch (error) {
