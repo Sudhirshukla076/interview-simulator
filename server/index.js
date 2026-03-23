@@ -5,6 +5,14 @@ const connectDB = require("./config/db");
 const express = require("express");
 const cors = require("cors");
 
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://interview-simulatorr.vercel.app"
+  ],
+  credentials: true
+}));
+
 const app = express();
 connectDB();
 app.use(
