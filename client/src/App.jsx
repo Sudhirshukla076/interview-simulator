@@ -1,0 +1,35 @@
+import { Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Results from "./pages/Results";
+import Leaderboard from "./pages/Leaderboard";
+
+function App() {
+  const isLoggedIn = !!localStorage.getItem("token");
+
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login />}
+      />
+
+      <Route
+        path="/dashboard"
+        element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
+      />
+
+      <Route
+        path="/results"
+        element={isLoggedIn ? <Results /> : <Navigate to="/" />}
+      />
+
+      <Route
+        path="/leaderboard"
+        element={<Leaderboard />}
+      />
+    </Routes>
+  );
+}
+
+export default App;
