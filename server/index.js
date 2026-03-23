@@ -1,3 +1,4 @@
+require("dotenv").config();
 const interviewRoutes = require("./routes/interviewRoutes");
 const authRoutes = require("./routes/authRoutes");
 const connectDB = require("./config/db");
