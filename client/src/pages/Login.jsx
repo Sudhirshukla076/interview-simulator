@@ -8,7 +8,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://interview-backend-u5yp.onrender.com/api/auth/login",
         { email, password }
       );
 
@@ -20,6 +20,7 @@ function Login() {
       alert("Login successful 🚀");
       window.location.href = "/dashboard";
     } catch (error) {
+      console.log(error);
       alert("Login failed ❌");
     }
   };

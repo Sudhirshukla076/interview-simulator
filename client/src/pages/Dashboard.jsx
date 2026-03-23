@@ -12,7 +12,7 @@ function Dashboard() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/interview/start",
+        "https://interview-backend-u5yp.onrender.com/api/interview/start",
         {
           headers: { Authorization: token },
         }
@@ -32,7 +32,7 @@ function Dashboard() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5000/api/interview/submit",
+        "https://interview-backend-u5yp.onrender.com/api/interview/submit", 
         {
           questionId: question._id,
           status: status,

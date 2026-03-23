@@ -13,8 +13,7 @@ function Results() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/interview/results",
-        {
+        "https://interview-backend-u5yp.onrender.com/api/interview/results",
           headers: { Authorization: token },
         }
       );
