@@ -5,6 +5,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // 🔥 NORMAL LOGIN
   const handleLogin = async () => {
     try {
       const res = await axios.post(
@@ -12,11 +13,7 @@ function Login() {
         { email, password }
       );
 
-      console.log(res.data);
-
-      // Save token
       localStorage.setItem("token", res.data.token);
-
       alert("Login successful 🚀");
       window.location.href = "/dashboard";
     } catch (error) {
@@ -25,64 +22,94 @@ function Login() {
     }
   };
 
+  // 🔥 DEMO AUTO LOGIN (NO PASSWORD SHOWN)
+  const handleDemoLogin = async () => {
+    try {
+      const res = await axios.post(
+        "https://interview-backend-u5yp.onrender.com/api/auth/login",
+        {
+          email: "sudhir@test.com",
+          password: "123456",
+        }
+      );
+
+      localStorage.setItem("token", res.data.token);
+      window.location.href = "/dashboard";
+    } catch (err) {
+      console.log(err);
+      alert("Demo login failed ❌");
+    }
+  };
+
   return (
     <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
-      <h2>Login</h2>
+      <h2 style={{ textAlign: "center" }}>Login</h2>
 
       <input
         type="email"
         placeholder="Enter email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        style={{ width: "100%", padding: "8px" }}
+        style={{ width: "100%", padding: "10px", marginTop: "10px" }}
       />
-      <br /><br />
 
       <input
         type="password"
         placeholder="Enter password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        style={{ width: "100%", padding: "8px" }}
+        style={{ width: "100%", padding: "10px", marginTop: "10px" }}
       />
-      <br /><br />
 
-      <button onClick={handleLogin} style={{ width: "100%", padding: "10px" }}>
+      <button
+        onClick={handleLogin}
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginTop: "15px",
+          cursor: "pointer",
+        }}
+      >
         Login
       </button>
 
-      {/* 🔥 DEMO BOX */}
+      {/* 🔥 DEMO LOGIN CARD */}
       <div
         style={{
           marginTop: "20px",
-          padding: "12px",
-          borderRadius: "8px",
+          padding: "15px",
+          borderRadius: "10px",
           background: "linear-gradient(135deg, #667eea, #764ba2)",
           color: "white",
-          textAlign: "center"
+          textAlign: "center",
         }}
       >
-        <p style={{ fontWeight: "bold" }}>🚀 Try Demo Account</p>
-        <p>Email: sudhir@test.com</p>
-        <p>Password: 123456</p>
+        <p style={{ fontWeight: "bold" }}>🚀 Try Demo</p>
 
-        {/* 🔥 AUTOFILL BUTTON */}
         <button
-          onClick={() => {
-            setEmail("sudhir@test.com");
-            setPassword("123456");
-          }}
+          onClick={handleDemoLogin}
           style={{
             marginTop: "10px",
-            padding: "8px 12px",
+            padding: "10px 15px",
             border: "none",
             borderRadius: "5px",
-            cursor: "pointer"
+            cursor: "pointer",
           }}
         >
-          Fill Demo Credentials
+          Login as Demo User
         </button>
       </div>
+
+      {/* 🔥 SIGNUP LINK */}
+      <p style={{ marginTop: "15px", textAlign: "center" }}>
+        New user?{" "}
+        <span
+          onClick={() => (window.location.href = "/signup")}
+          style={{ color: "blue", cursor: "pointer" }}
+        >
+          Sign up here
+        </span>
+      </p>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Results from "./pages/Results";
 import Leaderboard from "./pages/Leaderboard";
+import Signup from "./pages/Signup";
 
 function App() {
   const isLoggedIn = !!localStorage.getItem("token");
@@ -27,6 +28,9 @@ function App() {
       <Route
         path="/leaderboard"
         element={<Leaderboard />}
+      />
+      <Route path="/signup" 
+      element={<Signup />}
       />
     </Routes>
   );
