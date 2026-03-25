@@ -22,7 +22,7 @@ function Login() {
     }
   };
 
-  // 🔥 DEMO AUTO LOGIN (NO PASSWORD SHOWN)
+  // 🔥 DEMO AUTO LOGIN (ONE CLICK)
   const handleDemoLogin = async () => {
     try {
       const res = await axios.post(
@@ -45,60 +45,65 @@ function Login() {
     <div style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}>
       <h2 style={{ textAlign: "center" }}>Login</h2>
 
+      {/* EMAIL */}
       <input
         type="email"
         placeholder="Enter email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        style={{ width: "100%", padding: "10px", marginTop: "10px" }}
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginTop: "10px",
+          borderRadius: "6px",
+        }}
       />
 
+      {/* PASSWORD */}
       <input
         type="password"
         placeholder="Enter password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        style={{ width: "100%", padding: "10px", marginTop: "10px" }}
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginTop: "10px",
+          borderRadius: "6px",
+        }}
       />
 
+      {/* LOGIN BUTTON */}
       <button
         onClick={handleLogin}
         style={{
           width: "100%",
           padding: "10px",
           marginTop: "15px",
+          borderRadius: "6px",
           cursor: "pointer",
         }}
       >
         Login
       </button>
 
-      {/* 🔥 DEMO LOGIN CARD */}
-      <div
+      {/* 🔥 DEMO BUTTON (FINAL CLEAN) */}
+      <button
+        onClick={handleDemoLogin}
         style={{
+          width: "100%",
+          padding: "12px",
           marginTop: "20px",
-          padding: "15px",
           borderRadius: "10px",
+          border: "none",
           background: "linear-gradient(135deg, #667eea, #764ba2)",
           color: "white",
-          textAlign: "center",
+          fontWeight: "bold",
+          cursor: "pointer",
         }}
       >
-        <p style={{ fontWeight: "bold" }}>🚀 Try Demo</p>
-
-        <button
-          onClick={handleDemoLogin}
-          style={{
-            marginTop: "10px",
-            padding: "10px 15px",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Login as Demo User
-        </button>
-      </div>
+        🚀 Try Demo
+      </button>
 
       {/* 🔥 SIGNUP LINK */}
       <p style={{ marginTop: "15px", textAlign: "center" }}>

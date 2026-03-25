@@ -15,9 +15,9 @@ function Signup() {
       alert("Signup successful 🎉");
       window.location.href = "/";
     } catch (err) {
-      console.log(err);
-      alert("Signup failed ❌");
-    }
+  console.log(err.response?.data);
+  alert(err.response?.data?.message || "Signup failed ❌");
+}
   };
 
   return (
