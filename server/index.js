@@ -18,7 +18,9 @@ app.use(cors({
 app.use(express.json());
 
 // ✅ DB connect
-connectDB();
+connectDB().then(() => {
+  console.log("DB connected successfully");
+});
 
 // ✅ Routes
 app.use("/api/auth", authRoutes);
